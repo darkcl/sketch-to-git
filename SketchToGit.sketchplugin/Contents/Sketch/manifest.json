@@ -32,6 +32,24 @@
       "identifier" : "sketch.to.git.ignore"
     },
     {
+      "script" : "app.js",
+      "handler": "onCommit",
+      "name" : "Commit Changes",
+      "identifier" : "sketch.to.git.commit"
+    },
+    {
+      "script" : "app.js",
+      "handler": "onPush",
+      "name" : "Push Changes",
+      "identifier" : "sketch.to.git.push"
+    },
+    {
+      "script" : "app.js",
+      "handler": "onPull",
+      "name" : "Pull Changes & Refresh",
+      "identifier" : "sketch.to.git.pull"
+    },
+    {
       "script": "app.js",
       "handler": "onRepoInfo",
       "shortcut": "command shift b",
@@ -39,4 +57,16 @@
       "identifier": "sketch.to.git.repo"
     }
   ],
+  "menu": {
+    "title": "Sketch To Git",
+    "items": [
+      "sketch.to.git.unzip",
+      "sketch.to.git.reload",
+      "sketch.to.git.ignore",
+      "sketch.to.git.commit",
+      "sketch.to.git.push",
+      "sketch.to.git.pull",
+      "sketch.to.git.repo"
+    ]
+  }
 }

@@ -9,6 +9,7 @@ function removeFileExtension(layerName){
 }
 
 function cli(context,  command) {
+
 	var task = NSTask.alloc().init()
 	var pipe = NSPipe.pipe()
 
@@ -50,4 +51,15 @@ function reloadSketch(context, name) {
 	cli(context, `rm -Rf ${docname}/${docname}.zip`);
 }
 
+function commitToRepo(context, comment) {
+	cli(context, "git add .");
+	return cli(context, "git commit -m\"" + comment + "\"");
+}
 
+function pushToRepo(context) {
+	return cli(context, "git push");
+}
+
+function pullFromRepo(context) {
+	return cli(context, 'git pull');
+}

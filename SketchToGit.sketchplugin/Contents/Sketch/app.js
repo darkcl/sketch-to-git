@@ -26,3 +26,25 @@ var onReload = function (context) {
     }
 
 }
+
+var onCommit = function(context) {
+    var sketch = context.api()
+    var doc = context.document;
+    var result = [doc askForUserInput:"What did you change?" initialValue:""];
+    commitToRepo(context, result)
+}
+
+var onPush = function(context) {
+    var sketch = context.api()
+    sketch.alert(pushToRepo(context), '')
+}
+
+var onPull = function(context) {
+    var sketch = context.api()
+    
+
+    var doc = context.document;
+    unzip(context, doc.displayName());
+    reloadSketch(context, doc.displayName());
+    sketch.alert(pullFromRepo(context), 'File Reloaded.')
+}
