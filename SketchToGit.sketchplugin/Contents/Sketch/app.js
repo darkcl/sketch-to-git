@@ -1,8 +1,15 @@
 @import 'common.js'
 
 var onRun = function (context) {
-	var doc = context.document;
-	unzip(context, doc.displayName());
+    var doc = context.document;
+    var sketch = context.api()
+
+    sketch.alert('', 'File Unzipping.')
+
+    unzip(context, doc.displayName());
+    expandJSON(context, doc.displayName());
+    
+    sketch.alert('', 'File Unzipped.')
 }
 
 var onGenerateIgnore = function (context) {
@@ -22,7 +29,7 @@ var onReload = function (context) {
     var inputs = sketch.getSelectionFromUser("You confirm to reload ?", ["Yes"], 0);
     if (inputs[0] != "1001") {
         reloadSketch(context, doc.displayName());
-        [NSApp sendAction:'saveDocument:' to:nil from:doc]
+        // [NSApp sendAction:'saveDocument:' to:nil from:doc]
     }
 
 }

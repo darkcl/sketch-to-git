@@ -63,3 +63,12 @@ function pushToRepo(context) {
 function pullFromRepo(context) {
 	return cli(context, 'git pull');
 }
+
+function expandJSON(context, name) {
+	var path = getCurrentDirectory(context)
+	var expandedPath = path + '/' + removeFileExtension(name);
+	var installJsBeautify = `which js-beautify || npm install js-beautify -g`
+	var jsPretty = `cd "${expandedPath}" && find . | grep json | xargs -I "{}" js-beautify -f "{}" -o "{}"`
+	
+	return cli(context, jsPretty)
+}
